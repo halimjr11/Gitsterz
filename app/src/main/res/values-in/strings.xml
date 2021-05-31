@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gitsterz</string>
+    <string name="search">Cari</string>
+    <string name="search_hint">Masukkan Username</string>
+    <string name="username_user">Username</string>
+    <string name="name">Nama</string>
+    <string name="tab_text_1">Repositori</string>
+    <string name="tab_text_2">Pengikut</string>
+    <string name="tab_text_3">Mengikuti</string>
+    <string name="username">Username</string>
+    <string name="city">Kota</string>
+    <string name="repos_name">Nama Repositori</string>
+    <string name="company">Perusahaan</string>
+    <string name="language_settings">Pengaturan Bahasa</string>
+    <string name="app_logo_s">App Logo\'s</string>
+    <string name="alert_message">Silakan hubungkan ponsel anda ke internet</string>
+    <string name="detail">Detail Pengguna</string>
+    <string name="go_back">Kembali</string>
+    <string name="oops_no_internet">Oops! Tidak ada Internet!</string>
+    <string name="favorite_s_user">Pengguna Favorit</string>
+    <string name="set_application_reminder">Setel Pengingat Aplikasi</string>
+    <string name="on_reminder">Pengingat Anda telah diaktifkan</string>
+    <string name="off_reminder">Pengingat Anda Nonaktif</string>
+    <string name="reminder">Pengingat</string>
+    <string name="other_settings">Pengaturan lainnya</string>
+    <string name="search_empty">Tulis sesuatu!</string>
+    <string name="cancel_alarm">Pengingat Alarm telah dibatalkan!</string>
+    <string name="set_alarm">Pengingat Alarm berhasil disetel!</string>
+    <string name="settings">Pengaturan</string>
+    <string name="alarm_message">Pengingat Gitsterz</string>
+    <string name="image_avatar">gambar avatar</string>
+    <string name="user_url">URL Pengguna</string>
+    <string name="data_not_found">Data tidak ditemukan</string>
+    <string name="widget_favorites">"Favorit Widget "</string>
+    <string name="logo_gitsterz">Logo Gitsterz</string>
+    <string name="share_menu">Menu berbagi</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="repository">Repository</string>
+</resources>

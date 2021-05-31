@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gitsterz</string>
+    <string name="search">Búsqueda</string>
+    <string name="search_hint">Ingrese el nombre de usuario</string>
+    <string name="username_user">Nombre de usuario</string>
+    <string name="name">Nombre</string>
+    <string name="tab_text_1">Repositorio</string>
+    <string name="tab_text_2">Reguidor</string>
+    <string name="tab_text_3">Siguiendo</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="city">Ciudad</string>
+    <string name="repos_name">Nombre del repositorio</string>
+    <string name="company">Compañía</string>
+    <string name="language_settings">Configuración de idioma</string>
+    <string name="app_logo_s">Logo de la aplicacion</string>
+    <string name="alert_message">Por favor, connecte su telefono a internet</string>
+    <string name="detail">Usuario de detalle</string>
+    <string name="go_back">Regresa</string>
+    <string name="oops_no_internet">iOops! Sin Internet!</string>
+    <string name="favorite_s_user">Usario Favorit</string>
+    <string name="set_application_reminder">Establecer recordatorio de aplicación</string>
+    <string name="on_reminder">Tu recordatorio ha sido activado</string>
+    <string name="off_reminder">Tu recordatorio estaba desactivado</string>
+    <string name="reminder">Recordatorio</string>
+    <string name="other_settings">Otros ajustes</string>
+    <string name="search_empty">¡Escribe algo!</string>
+    <string name="cancel_alarm">¡El recordatorio de alarma ha sido cancelado!</string>
+    <string name="set_alarm">¡La configuración del recordatorio de alarma se realizó correctamente!</string>
+    <string name="settings">Ajustes</string>
+    <string name="alarm_message">Recordatorio de Gitsterz</string>
+    <string name="image_avatar">Avatar de Imagen</string>
+    <string name="user_url">URL de Usuario</string>
+    <string name="data_not_found">Datos no encontrados</string>
+    <string name="widget_favorites">Favoritos de Widget</string>
+    <string name="logo_gitsterz">Logo Gitsterz</string>
+    <string name="share_menu">Compartir Menu</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="repository">Repository</string>
+</resources>

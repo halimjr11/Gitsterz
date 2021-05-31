@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "Gitsterz"
+include ':core'
+include ':favorite'

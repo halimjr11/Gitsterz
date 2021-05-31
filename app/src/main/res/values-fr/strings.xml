@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gitsterz</string>
+    <string name="search">Chercher</string>
+    <string name="search_hint">Saisir le nom d\'utilisateur</string>
+    <string name="username_user">Nom  d\'utilisateur</string>
+    <string name="name">Nom</string>
+    <string name="tab_text_1">Referentiel</string>
+    <string name="tab_text_2">Suiveurs</string>
+    <string name="tab_text_3">Suivant</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="city">Ville</string>
+    <string name="repos_name">Nom du referentiel</string>
+    <string name="company">compagnie</string>
+    <string name="language_settings">Paarametres de langue</string>
+    <string name="app_logo_s">Logo de l\'application</string>
+    <string name="alert_message">Veiillez connector votre telephone a internet</string>
+    <string name="detail">Utilisateur de Détail</string>
+    <string name="go_back">Retourner</string>
+    <string name="oops_no_internet">Oops! Pas d\'Internet!</string>
+    <string name="favorite_s_user">Utilisateur Favoris</string>
+    <string name="set_application_reminder">Définir un rappel d\'application</string>
+    <string name="on_reminder">Votre rappel a été activé</string>
+    <string name="off_reminder">Votre rappel a été désactivé</string>
+    <string name="reminder">Rappel</string>
+    <string name="other_settings">Autres réglages</string>
+    <string name="search_empty">Écris quelque chose!</string>
+    <string name="cancel_alarm">Le rappel d\'alarme a été annulé!</string>
+    <string name="set_alarm">La configuration du rappel d\'alarme a réussi!</string>
+    <string name="settings">Paramètres</string>
+    <string name="alarm_message">Rappel Gitsterz</string>
+    <string name="image_avatar">Avatar de l\'Image</string>
+    <string name="user_url">URL de l\'Utilisateur</string>
+    <string name="data_not_found">Donnees non trouvees</string>
+    <string name="widget_favorites">Favoris du Widget</string>
+    <string name="logo_gitsterz">Logo Gitsterz</string>
+    <string name="share_menu">Partager le Menu</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="repository">Repository</string>
+</resources>
