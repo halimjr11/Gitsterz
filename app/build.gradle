@@ -46,6 +46,12 @@ android {
     buildFeatures{
         viewBinding true
     }
+    lintOptions {
+        baseline file("lint-baseline.xml")
+        checkReleaseBuilds false
+        warningsAsErrors true
+        abortOnError true
+    }
     ndkVersion '23.0.7123448 rc1'
     dynamicFeatures = [':favorite']
 }

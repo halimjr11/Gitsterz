@@ -14,7 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "API_TOKEN", '"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"')
+        buildConfigField("String", "API_TOKEN", '"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"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions{
@@ -45,6 +45,7 @@ android {
     buildFeatures{
         viewBinding true
     }
+
 }
 
 dependencies {
