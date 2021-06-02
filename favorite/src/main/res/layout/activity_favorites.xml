@@ -6,7 +6,7 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".favorite.FavoritesActivity">
+    tools:context=".FavoritesActivity">
 
     <ProgressBar
         android:id="@+id/progressbar1"

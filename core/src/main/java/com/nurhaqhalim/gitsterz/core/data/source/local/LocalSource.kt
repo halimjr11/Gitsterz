@@ -42,14 +42,6 @@ class LocalSource constructor(private val dao: UserDao) {
         data.await()
     }
 
-    fun checkUser(id:Int) : Int = runBlocking {
-        val data = async {
-            dao.checkUser(id)
-        }
-        data.start()
-        data.await()
-    }
-
     fun checkSearch(query:String) : Int = runBlocking {
         val data = async {
             dao.searchCheck(query)

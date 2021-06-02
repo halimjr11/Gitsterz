@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.nurhaqhalim.gitsterz.databinding.ActivityFavoritesBinding
 import com.nurhaqhalim.gitsterz.core.domain.model.UserModel
+import com.nurhaqhalim.gitsterz.favorite.databinding.ActivityFavoritesBinding
 import com.nurhaqhalim.gitsterz.favorite.di.favoriteModule
 import com.nurhaqhalim.gitsterz.view.detail.DetailActivity
 import com.nurhaqhalim.gitsterz.view.adapter.GitsterzAdapter

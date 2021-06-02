@@ -19,8 +19,8 @@ class Reminder(context: Context) {
     }
 
     fun getAlarm(): AlarmModel {
-        val Remind = AlarmModel()
-        Remind.isRemind = remindPreference.getBoolean(Reminder, false)
-        return Remind
+        val remind = AlarmModel()
+        remind.isRemind = remindPreference.getBoolean(Reminder, false)
+        return remind
     }
 }

@@ -2,7 +2,6 @@ package com.nurhaqhalim.gitsterz.core.di
 
 import com.nurhaqhalim.gitsterz.core.data.source.remote.network.ApiEndpoint
 import com.nurhaqhalim.gitsterz.core.utils.Constants
-import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

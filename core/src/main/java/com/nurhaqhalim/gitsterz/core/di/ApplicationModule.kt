@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val applicationModule = module {
     single<UserRepository> {
-        com.nurhaqhalim.gitsterz.core.data.Repository(get(), get())
+        Repository(get(), get())
     }
 
     single {
