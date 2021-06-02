@@ -37,15 +37,6 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
-      - run:
-          name: Run Vulnerabilities Analysis
-          command: |
-            curl -LJO https://vulnerability-checker.s3.amazonaws.com/release/partner/CircleCI/wss-vulnerability-checker-201910-Top250-Top50-CircleCI.zip
-            unzip wss-vulnerability-checker-201910-Top250-Top50-CircleCI.zip
-            ./vulnerability-checker.sh -d <<parameters.directory>>
-            mkdir -p /tmp/results
-            cp VulnerabilityCheckerReport.html /tmp/results
-            echo check artifacts for results
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:  
