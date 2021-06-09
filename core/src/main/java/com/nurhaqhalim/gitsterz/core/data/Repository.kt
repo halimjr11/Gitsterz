@@ -54,18 +54,21 @@ class Repository constructor(
     }
 
     override fun getFavorite() : Flow<List<UserModel>> {
-        return flow{
-            val user = local.getFavList().first()
-            emit(DataMapper.entityToDomain(user))
-        }.flowOn(Dispatchers.IO)
+        return runBlocking { local.getFavList().map { DataMapper.entityToDomain(it) }}
     }
 
     override fun getDetail(username: String) : Flow<UserModel> {
         return flow {
             when (val apiResponse = run { remote.loadDetailUser(username).first() }) {
                 is ApiResponse.Success -> {
-                    val data = DataMapper.responseToEntity(apiResponse.data)
-                    run { local.setDetail(data) }
+                    val cek = local.checkUser(apiResponse.data.id)
+                    if (cek == 0){
+                        val data = DataMapper.responseToEntity(apiResponse.data)
+                        run { local.addToDb(data) }
+                    }else{
+                        val data = DataMapper.responseToEntity(apiResponse.data)
+                        run { local.setDetail(data) }
+                    }
                 }
             }
             val user = run{ local.getDetail(username).first() }

@@ -10,6 +10,7 @@ import com.nurhaqhalim.gitsterz.core.domain.model.UserModel
 
 class GitsterzAdapter : RecyclerView.Adapter<GitsterzAdapter.ViewHolder>() {
     private val result = ArrayList<UserModel>()
+
     private lateinit var onItemClickCallback: OnItemClickCallback
     fun setData(items: List<UserModel>) {
         result.clear()

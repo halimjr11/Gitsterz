@@ -11,10 +11,10 @@ interface UserDao {
     fun addToDb(user: User)
 
     @Query("UPDATE user_table SET favorite = 1 WHERE id = :id")
-    suspend fun setFavorite(id: Int)
+    fun setFavorite(id: Int)
 
     @Query("UPDATE user_table SET favorite = 0 WHERE id = :id")
-    suspend fun unSetFavorite(id: Int)
+    fun unSetFavorite(id: Int)
 
     @Query("SELECT * FROM user_table WHERE favorite = 1 ORDER BY login ASC")
     fun getFavData() : Flow<List<User>>

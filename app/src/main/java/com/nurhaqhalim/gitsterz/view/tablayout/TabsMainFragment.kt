@@ -48,16 +48,19 @@ class TabsMainFragment : Fragment() {
         when(index){
             0 -> viewModel.getReposData(username1?: "").observe(viewLifecycleOwner,{
                 if (it.isNotEmpty()){
+                    showLoading(false)
                     adapter.setData(it)
                 }
             })
             1 -> viewModel.getFollowersData(username1 ?: "").observe(viewLifecycleOwner,{
                 if (it.isNotEmpty()){
+                    showLoading(false)
                     adapter.setData(it)
                 }
             })
             2 -> viewModel.getFollowingData(username1?: "").observe(viewLifecycleOwner,{
                 if (it.isNotEmpty()){
+                    showLoading(false)
                     adapter.setData(it)
                 }
             })

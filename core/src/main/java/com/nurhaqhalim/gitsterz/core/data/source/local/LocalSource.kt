@@ -50,6 +50,14 @@ class LocalSource constructor(private val dao: UserDao) {
         data.await()
     }
 
+    fun checkUser(id: Int) : Int = runBlocking {
+        val data =  async {
+            dao.checkUser(id)
+        }
+        data.start()
+        data.await()
+    }
+
     suspend fun setFavorite(id: Int) =
         withContext(Dispatchers.IO){
             dao.setFavorite(id)

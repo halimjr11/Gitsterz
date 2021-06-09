@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.nurhaqhalim.gitsterz
 
 import android.app.Application

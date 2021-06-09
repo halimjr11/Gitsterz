@@ -1,12 +1,10 @@
 package com.nurhaqhalim.gitsterz.favorite
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.nurhaqhalim.gitsterz.core.domain.model.UserModel
 import com.nurhaqhalim.gitsterz.favorite.databinding.ActivityFavoritesBinding
 import com.nurhaqhalim.gitsterz.favorite.di.favoriteModule
@@ -20,7 +18,8 @@ import org.koin.core.context.loadKoinModules
 class FavoritesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoritesBinding
     private val viewModel: FavoriteViewModel by viewModel()
-    private lateinit var adapter: GitsterzAdapter
+    private lateinit var favAdapter: GitsterzAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,24 +29,24 @@ class FavoritesActivity : AppCompatActivity() {
         loadKoinModules(favoriteModule)
 
         showLoading(true)
-        adapter = GitsterzAdapter()
-        adapter.notifyDataSetChanged()
+        favAdapter = GitsterzAdapter()
+
+        binding.listFav.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            this.adapter = favAdapter
+        }
 
         viewModel.getFavoriteList().observe(this,{
             showLoading(false)
-            if (it.isEmpty()){
-                Snackbar.make(binding.constraint, "Username Invalid, data not found!", Snackbar.LENGTH_LONG)
-                    .setBackgroundTint(Color.parseColor("#8d5a0b"))
-                    .show()
+            if (it.isNotEmpty()){
+                favAdapter.setData(it)
             }else{
-                adapter.setData(it)
+                favAdapter.setData(it)
             }
         })
 
-        binding.listFav.layoutManager = LinearLayoutManager(this)
-        binding.listFav.adapter = adapter
-
-        adapter.setOnItemClickCallback(object: GitsterzAdapter.OnItemClickCallback{
+        favAdapter.setOnItemClickCallback(object: GitsterzAdapter.OnItemClickCallback{
             override fun onItemClicked(data: UserModel) {
                 Intent(this@FavoritesActivity, DetailActivity::class.java).also{
                     it.putExtra(DetailActivity.EXTRA_DATA,data)
