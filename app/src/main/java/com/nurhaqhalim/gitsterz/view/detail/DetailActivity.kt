@@ -8,12 +8,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
 import com.bumptech.glide.Glide
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nurhaqhalim.gitsterz.core.domain.model.UserModel
 import com.nurhaqhalim.gitsterz.R
 import com.nurhaqhalim.gitsterz.databinding.ActivityDetailBinding
-import com.nurhaqhalim.gitsterz.view.networkcheck.NetworkConnection
 import com.nurhaqhalim.gitsterz.view.tablayout.adapter.ItemsPagerAdapter
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,21 +46,6 @@ class DetailActivity : AppCompatActivity() {
         val userName = data.login
         val id = data.id
 
-        val network = NetworkConnection(this)
-        network.observe(this, {isConnected ->
-            if (!isConnected){
-                MaterialAlertDialogBuilder(this)
-                    .setTitle(resources.getString(R.string.oops_no_internet))
-                    .setIcon(R.drawable.ic_no_internet_icon)
-                    .setMessage(resources.getString(R.string.alert_message))
-                    .setNeutralButton(resources.getString(R.string.go_back)){
-                            _, _ -> finish()
-                    }
-                    .show()
-            }else{
-                getDetail(userName)
-            }
-        })
         getDetail(userName)
 
 
@@ -120,6 +103,7 @@ class DetailActivity : AppCompatActivity() {
             true
         }
     }
+
     private fun getDetail(username: String){
         showLoading(false)
         viewModel.getDetail(username).observe(this, {

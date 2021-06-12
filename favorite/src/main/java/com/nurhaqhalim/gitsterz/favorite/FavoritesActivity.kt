@@ -42,7 +42,8 @@ class FavoritesActivity : AppCompatActivity() {
             if (it.isNotEmpty()){
                 favAdapter.setData(it)
             }else{
-                favAdapter.setData(it)
+                binding.listFav.visibility = View.GONE
+                binding.notFound.visibility = View.VISIBLE
             }
         })
 

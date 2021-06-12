@@ -49,8 +49,6 @@
     <string name="widget_favorites">Widget Favorites</string>
     <string name="logo_gitsterz">Logo Gitsterz</string>
     <string name="share_menu">Share Menu</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="following">Following</string>
     <string name="followers">Followers</string>
     <string name="repository">Repository</string>

@@ -19,19 +19,16 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="40dp"
-            android:src="#575757"
-            android:layout_gravity="center|start"
-            app:civ_border_color="@color/black"
-            app:civ_border_width="2dp" />
+            android:src="#878787"
+            android:layout_gravity="center|start"/>
 
-        <TextView
+        <View
             android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
             android:layout_marginStart="140dp"
             android:layout_marginTop="40dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:background="#878787"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

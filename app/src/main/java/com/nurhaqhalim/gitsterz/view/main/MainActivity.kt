@@ -3,7 +3,6 @@ package com.nurhaqhalim.gitsterz.view.main
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,14 +11,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.nurhaqhalim.gitsterz.R
 import com.nurhaqhalim.gitsterz.databinding.ActivityMainBinding
 import com.nurhaqhalim.gitsterz.core.domain.model.UserModel
 import com.nurhaqhalim.gitsterz.view.detail.DetailActivity
 import com.nurhaqhalim.gitsterz.view.adapter.GitsterzAdapter
-import com.nurhaqhalim.gitsterz.view.networkcheck.NetworkConnection
 import com.nurhaqhalim.gitsterz.view.settings.SettingsActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,20 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val networkConnection = NetworkConnection(applicationContext)
-        networkConnection.observe(this, { isConnected ->
-            if (!isConnected){
-                MaterialAlertDialogBuilder(this)
-                    .setTitle(resources.getString(R.string.oops_no_internet))
-                    .setIcon(R.drawable.ic_no_internet_icon)
-                    .setMessage(resources.getString(R.string.alert_message))
-                    .setNeutralButton(resources.getString(R.string.go_back)){
-                            _, _ -> onRestart()
-                    }
-                    .show()
-            }
-        })
-
         showLoading(true)
         adapter = GitsterzAdapter()
         adapter.notifyDataSetChanged()
@@ -65,12 +47,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        mainViewModel.getAllData().observe(this@MainActivity,{
-                showLoading(false)
-                if (it.isEmpty()){
-                    Snackbar.make(binding.constraint, "Username Invalid, data not found!", Snackbar.LENGTH_LONG)
-                        .setBackgroundTint(Color.parseColor("#8d5a0b"))
-                        .show()
+        mainViewModel.getAllData().observe(this,{
+            showLoading(false)
+            if (it.isEmpty()){
+                    binding.recyclerView.visibility = View.GONE
+                    binding.notFound.visibility = View.VISIBLE
                 }else{
                     adapter.setData(it)
                 }
@@ -78,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     private fun showSelected(data: UserModel){
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_DATA,data)
@@ -104,14 +86,16 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 showLoading(true)
+                binding.recyclerView.visibility = View.GONE
                 mainViewModel.getSearchQuery(query).observe(this@MainActivity,{
                     showLoading(false)
-                    if (it.isEmpty()){
-                        Snackbar.make(binding.constraint, "Username Invalid, data not found!", Snackbar.LENGTH_LONG)
-                            .setBackgroundTint(Color.parseColor("#8d5a0b"))
-                            .show()
-                    }else{
+                    if (it.isNotEmpty()){
+                        binding.recyclerView.visibility = View.VISIBLE
                         adapter.setData(it)
+                        adapter.notifyDataSetChanged()
+                    }else{
+                        binding.recyclerView.visibility = View.GONE
+                        binding.notFound.visibility = View.VISIBLE
                     }
                 })
                 return true

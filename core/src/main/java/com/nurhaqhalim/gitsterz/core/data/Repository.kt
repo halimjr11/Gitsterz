@@ -17,38 +17,38 @@ class Repository constructor(
 ) : UserRepository {
 
     override fun getAllUser(): Flow<List<UserModel>> {
-        return flow{
-            val data = run{ local.getAllUser().first() }
-
-            if (data.isEmpty()) {
+        val data = runBlocking{ local.getAllUser().first() }
+        println("data awal : $data")
+        return if (data.isEmpty()) {
+            flow{
                 when (val apiResponse = run { remote.loadAllUser().first() }) {
                     is ApiResponse.Success -> {
                         apiResponse.data.forEach {
                             val dt = DataMapper.responseToEntity(it)
                             runBlocking { local.addToDb(dt) }
+                            emit(DataMapper.entityToDomain(runBlocking { local.getAllUser().first() }))
                         }
-                        emit(DataMapper.entityToDomain(data))
                     }
                     is ApiResponse.Error -> emit(DataMapper.entityToDomain(data))
                 }
+            }.flowOn(Dispatchers.IO)
             } else {
-                emit(DataMapper.entityToDomain(data))
+                runBlocking { local.getAllUser().map { DataMapper.entityToDomain(it) } }
             }
-        }.flowOn(Dispatchers.IO)
     }
 
     override fun getSearch(query: String) : Flow<List<UserModel>> {
         return flow {
             val userCheck = local.checkSearch(query)
-            val user = local.getSearchList(query).first()
             if (userCheck == 0){
                 when (val apiResponse = run { remote.loadSearchedUser(query).first() }) {
                     is ApiResponse.Success -> {
                         emit(DataMapper.responseToDomain(apiResponse.data))
                     }
+                    is ApiResponse.Error -> emit(DataMapper.entityToDomain(local.getSearchList(query).first()))
                 }
             }else{
-                emit(DataMapper.entityToDomain(user))
+                emit(DataMapper.entityToDomain(local.getSearchList(query).first()))
             }
         }.flowOn(Dispatchers.IO)
     }
